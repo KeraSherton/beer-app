@@ -1,0 +1,16 @@
+#div {
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+  margin: 20px;
+}
+
+.Beer {
+  background-color: yellow;
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  position: static;
+  display: block;
+  border: 1px solid;
+}

@@ -1,28 +1,27 @@
-import React from 'react';
-import './App.css';
-import BeersList from './BeersList';
-import ButtonFetchBeers from './ButtonFetchBeers'
-
+import React from "react";
+import "./App.css";
+import BeersList from "./BeersList";
+import ButtonFetchBeers from "./ButtonFetchBeers";
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { food: '' };
+  state = {
+    food: ""
+  };
 
-
-  }
-
-  handleChange(event) {
-    this.setState({ food: event.target.value });
-  }
+  handleInputChange = e => {
+    this.setState({
+      food: e.target.value
+    });
+  };
 
   render() {
-
     return (
       <div>
-        <input type="text"
-          value={this.state.value}
-          onClick={this.handleChange}
+        <input
+          type="text"
+          id="foodName"
+          value={this.state.text}
+          onChange={this.handleInputChange}
           placeholder="   Write name of your food"
         />
       </div>
@@ -30,40 +29,33 @@ class Form extends React.Component {
   }
 }
 
-
 class App extends Form {
-
   state = {
-    beers: [],
-    food: this.props.food
-  }
-
+    beers: []
+  };
   handleDataFetch = () => {
-
-    // fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
-    fetch(`https://api.punkapi.com/v2/beers?food=${this.props.food}`)
+    fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
+      // fetch(`https://api.punkapi.com/v2/beers?food=${this.props.foodName}`)
       .then(response => {
         if (response.ok) {
           return response;
         }
-        throw Error(response.status)
+        throw Error(response.status);
       })
       .then(response => response.json())
       .then(json => {
         console.log(json);
         this.setState({
           beers: json
-        })
+        });
       })
-      .catch(error => console.log(error + " Something wrong!"))
-
-  }
+      .catch(error => console.log(error + " Something wrong!"));
+  };
   render() {
-
     const beers = this.state.beers;
-    console.log(beers)
-    const foodChoice = this.statefood
-    console.log(foodChoice)
+    console.log(beers);
+    // const foodChoice = this.statefood;
+    // console.log(foodChoice);
     return (
       <div className="app">
         <h1>Welcome!</h1>

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import BeersList from "./BeersList";
 import ButtonFetchBeers from "./ButtonFetchBeers";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   state = {
@@ -14,8 +15,6 @@ class App extends React.Component {
   }
 
   handleDataFetch = () => {
-    //fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
-    //console.log(this.state.food)
     fetch(`https://api.punkapi.com/v2/beers?food=${this.state.food}`)
       .then(response => {
         if (response.ok) {
@@ -43,13 +42,15 @@ class App extends React.Component {
         <div>
           <input
             type="text"
-            id="foodName"
             value={this.state.text}
             onChange={e => this.onInputChange(e.target.value)}
-            placeholder="   Write name of your food"
+            placeholder="Write name of your food"
           />
         </div>
-        <ButtonFetchBeers click={this.handleDataFetch} />
+        <ButtonFetchBeers
+          className="btn btn-danger"
+          click={this.handleDataFetch}
+        />
         <BeersList beers={beers} />
       </div>
     );

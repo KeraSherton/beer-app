@@ -11,21 +11,21 @@ body {
   font-size: 100%;
 }
 
-.form{
+.form {
   width: 200px;
 }
 
-h1{
-  font-size: 3.50em;
+h1 {
+  font-size: 3.5em;
 }
 
-h2{
+h2 {
   font-size: 2.475em;
-
 }
-h3{
+h3 {
   font-size: 2.075em;
+  font-style: bold;
 }
-p{
+p {
   font-size: 0.875em;
 }

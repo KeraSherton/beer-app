@@ -2,7 +2,7 @@ import React from 'react';
 
 const ButtonFetchBeers = props => {
   return (
-    <button onClick={props.click}>Search Your Beer</button>
+    <button className="button" onClick={props.click}>Search Your Beer</button>
 
   );
 }

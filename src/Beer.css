@@ -1,16 +1,24 @@
-#div {
-  background-color: blue;
-  height: 50px;
-  width: 50px;
-  margin: 20px;
+
+.app{
+  text-align: center;
+}
+.cont{
+  width: 100%;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.Beer {
+  background-color: rgba(255, 255, 255, 0.212);
+  width: 30%;
+  margin: 1.5%;
+  float: left;
+  display: block;
+  text-align: center;
 }
 
-.Beer {
-  background-color: yellow;
-  height: 200px;
-  width: 200px;
-  margin: 20px;
-  position: static;
-  display: block;
-  border: 1px solid;
+.image {
+  height: 250px;
+  width: auto;  
 }

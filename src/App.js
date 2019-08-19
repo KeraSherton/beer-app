@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import BeersList from './BeersList';
 import ButtonFetchBeers from './ButtonFetchBeers'
@@ -23,7 +23,7 @@ class Form extends React.Component {
         <input type="text"
           value={this.state.text}
           onChange={this.handleChange}
-          placeholder="Write name of main ingredience"
+          placeholder="   Write name of your food"
         />
       </div>
     );
@@ -62,20 +62,16 @@ class App extends Form {
     const beers = this.state.beers;
     console.log(beers)
     return (
-      <div>
+      <div className="app">
         <h1>Welcome!</h1>
         <h2>You want to know what order to drink? </h2>
         <h2>Tell me what you eat:</h2>
-        <Form />
+        <Form className="form" />
         <ButtonFetchBeers click={this.handleDataFetch} />
         <BeersList beers={beers} />
       </div>
     );
   }
 }
-
-
-
-
 
 export default App;

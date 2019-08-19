@@ -3,39 +3,20 @@ import "./App.css";
 import BeersList from "./BeersList";
 import ButtonFetchBeers from "./ButtonFetchBeers";
 
-class Form extends React.Component {
+class App extends React.Component {
   state = {
-    food: ""
-  };
-
-  handleInputChange = e => {
-    this.setState({
-      food: e.target.value
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          id="foodName"
-          value={this.state.text}
-          onChange={this.handleInputChange}
-          placeholder="   Write name of your food"
-        />
-      </div>
-    );
-  }
-}
-
-class App extends Form {
-  state = {
+    food: "",
     beers: []
   };
+
+  onInputChange(term) {
+    this.setState({ food: term });
+  }
+
   handleDataFetch = () => {
-    fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
-      // fetch(`https://api.punkapi.com/v2/beers?food=${this.props.foodName}`)
+    //fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
+    //console.log(this.state.food)
+    fetch(`https://api.punkapi.com/v2/beers?food=${this.state.food}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -51,17 +32,23 @@ class App extends Form {
       })
       .catch(error => console.log(error + " Something wrong!"));
   };
+
   render() {
     const beers = this.state.beers;
-    console.log(beers);
-    // const foodChoice = this.statefood;
-    // console.log(foodChoice);
     return (
       <div className="app">
         <h1>Welcome!</h1>
         <h2>You want to know what order to drink? </h2>
         <h2>Tell me what you eat:</h2>
-        <Form className="form" />
+        <div>
+          <input
+            type="text"
+            id="foodName"
+            value={this.state.text}
+            onChange={e => this.onInputChange(e.target.value)}
+            placeholder="   Write name of your food"
+          />
+        </div>
         <ButtonFetchBeers click={this.handleDataFetch} />
         <BeersList beers={beers} />
       </div>

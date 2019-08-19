@@ -10,7 +10,7 @@ const BeersList = props => {
   //     <li>{props.ingredients.malt.name}</li>
   //   </>
   const beers = props.beers.map(beer => (
-    <div className="Beer" key={beer.id}>
+    <div className="Beer" key={beer.id} ingredients={beer.ingredients}>
       <h3>{`${beer.name}`}</h3>
       <img className="image" src={beer.image_url} alt="Beer" />
       <div>{`${beer.description}`}</div>

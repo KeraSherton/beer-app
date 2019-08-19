@@ -9,7 +9,7 @@ class Form extends React.Component {
     super(props);
     this.state = { food: '' };
 
-    this.handleChange = this.handleChange.bind(this);
+
   }
 
   handleChange(event) {
@@ -17,12 +17,12 @@ class Form extends React.Component {
   }
 
   render() {
-    // const API = `https://api.punkapi.com/v2/beers?food=`}${this.state.food;
+
     return (
       <div>
         <input type="text"
-          value={this.state.text}
-          onChange={this.handleChange}
+          value={this.state.value}
+          onClick={this.handleChange}
           placeholder="   Write name of your food"
         />
       </div>
@@ -35,11 +35,13 @@ class App extends Form {
 
   state = {
     beers: [],
-    food: this.state.food
+    food: this.props.food
   }
+
   handleDataFetch = () => {
-    fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
-      // fetch(`https://api.punkapi.com/v2/beers?food={this.state.food}`)
+
+    // fetch(`https://api.punkapi.com/v2/beers?food=chicken`)
+    fetch(`https://api.punkapi.com/v2/beers?food=${this.props.food}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -56,11 +58,12 @@ class App extends Form {
       .catch(error => console.log(error + " Something wrong!"))
 
   }
-
   render() {
 
     const beers = this.state.beers;
     console.log(beers)
+    const foodChoice = this.statefood
+    console.log(foodChoice)
     return (
       <div className="app">
         <h1>Welcome!</h1>
